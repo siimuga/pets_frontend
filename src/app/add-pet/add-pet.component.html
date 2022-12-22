@@ -1,0 +1,77 @@
+<p class="fs-2 fw-semibold text-center">Add pet</p>
+<div class="container">
+  <div class="row">
+    <div class="offset-3"></div>
+    <div class="col-md-6">
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && sendRequest()" novalidate class="feedback-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text"
+                 id="name"
+                 class="form-control"
+                 name="name"
+                 placeholder="Name"
+                 [(ngModel)]="model.name"
+                 #name="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && name.invalid}"
+                 required/>
+          <div *ngIf="f.submitted && name.invalid" class="invalid-input">
+            <div *ngIf="name.errors?.['required']" class="fst-italic text-danger invalid-input">Field is required
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="code">Code</label>
+          <input type="number"
+                 id="code"
+                 class="form-control"
+                 name="code"
+                 placeholder="Code"
+                 [(ngModel)]="model.code"
+                 #code="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && code.invalid}"
+                 required min=100000 max=999999 />
+          <div *ngIf="f.submitted && code.invalid" class="invalid-input">
+            <div *ngIf="code.errors?.['required']" class="fst-italic text-danger invalid-input">Field is required
+            </div>
+            <div *ngIf="code.errors?.['min'] || code.errors?.['max']" class="fst-italic text-danger invalid-input">Code has to be 6 characters long
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="type">Type</label>
+          <input type="text"
+                 id="type"
+                 class="form-control"
+                 name="type"
+                 placeholder="Type"
+                 [(ngModel)]="model.type"
+          />
+        </div>
+        <div class="form-group">
+          <label for="fur_color">Fur color</label>
+          <input type="text"
+                 id="fur_color"
+                 class="form-control"
+                 name="fur_color"
+                 placeholder="Fur color"
+                 [(ngModel)]="model.furColor"
+          />
+        </div>
+        <div class="form-group">
+          <label for="country">Country of origin</label>
+          <input type="text"
+                 id="country"
+                 class="form-control"
+                 name="country"
+                 placeholder="Country of origin"
+                 [(ngModel)]="model.country"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary pull-right">
+          <span>Add pet</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
