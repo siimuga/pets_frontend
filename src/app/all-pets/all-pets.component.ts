@@ -27,4 +27,8 @@ export class AllPetsComponent implements OnInit{
       }
     )
   }
+
+  editPet() {
+
+  }
 }

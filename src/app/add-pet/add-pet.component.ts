@@ -17,11 +17,12 @@ export class AddPetComponent implements OnInit {
     furColor: '',
     country: ''
   };
-  types: Types[]=[];
-  furColors: FurColor[]=[];
-  countries: Countries[]=[];
+  types: Types[] = [];
+  furColors: FurColor[] = [];
+  countries: Countries[] = [];
+  selected: string = '';
 
-  constructor(private apiService:ApiService) {
+  constructor(private apiService: ApiService) {
   }
 
   ngOnInit() {
@@ -31,20 +32,22 @@ export class AddPetComponent implements OnInit {
   }
 
   sendRequest(): void {
-      this.apiService.sendRequest(this.model).subscribe(
-        res=>{
-          location.reload();
-        },
-        err=>{alert("An error has occured")}
-      )
+    this.apiService.sendRequest(this.model).subscribe(
+      res => {
+        location.reload();
+      },
+      err => {
+        alert("An error has occured")
+      }
+    )
   }
 
   public findAllTypes() {
     this.apiService.findAllTypes().subscribe(
-      res=>{
+      res => {
         this.types = res;
       },
-      err=> {
+      err => {
         alert("An error has occured")
       }
     )
@@ -52,10 +55,10 @@ export class AddPetComponent implements OnInit {
 
   public findAllFurColors() {
     this.apiService.findAllFurColors().subscribe(
-      res=>{
+      res => {
         this.furColors = res;
       },
-      err=> {
+      err => {
         alert("An error has occured")
       }
     )
@@ -63,10 +66,10 @@ export class AddPetComponent implements OnInit {
 
   public findAllCountries() {
     this.apiService.findAllCountries().subscribe(
-      res=>{
+      res => {
         this.countries = res;
       },
-      err=> {
+      err => {
         alert("An error has occured")
       }
     )

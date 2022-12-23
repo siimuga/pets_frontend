@@ -40,8 +40,8 @@ const appRoutes:Routes=[
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
     FormsModule,
+    RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
   providers: [],

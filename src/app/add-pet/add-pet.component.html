@@ -4,8 +4,8 @@
     <div class="offset-3"></div>
     <div class="col-md-6">
       <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && sendRequest()" novalidate class="feedback-form">
-        <div class="form-group">
-          <label for="name">Name</label>
+        <div class="form-group division">
+          <label for="name" class="mt-2 mb-2">Name</label>
           <input type="text"
                  id="name"
                  class="form-control"
@@ -20,8 +20,8 @@
             </div>
           </div>
         </div>
-        <div class="form-group">
-          <label for="code">Code</label>
+        <div class="form-group division">
+          <label for="code"  class="mt-2 mb-2">Code</label>
           <input type="number"
                  id="code"
                  class="form-control"
@@ -38,37 +38,42 @@
             </div>
           </div>
         </div>
-        <div class="form-group">
-          <label for="type">Type</label>
-          <input type="text"
-                 id="type"
-                 class="form-control"
-                 name="type"
-                 placeholder="Type"
-                 [(ngModel)]="model.type"
-          />
+
+        <div class="form-group division">
+          <label class="mt-2 mb-2">Type</label>
+          <div>
+            <select class="form-select" aria-label="Floating label select example" [(ngModel)]="selected">
+              <option selected disabled>Choose...</option>
+              <option *ngFor="let type of types" [ngValue]="type.name">{{ type.name }}</option>
+            </select>
+            asd {{model.type}}
+          </div>
+
         </div>
-        <div class="form-group">
-          <label for="fur_color">Fur color</label>
-          <input type="text"
-                 id="fur_color"
-                 class="form-control"
-                 name="fur_color"
-                 placeholder="Fur color"
-                 [(ngModel)]="model.furColor"
-          />
+
+          <div class="form-group division">
+            <label class="mt-2 mb-2">Fur color</label>
+            <div>
+              <select class="form-select"  aria-label="Floating label select example" [(ngModel)]="model.furColor">
+                <option selected disabled>Choose...</option>
+                <option *ngFor="let furColor of furColors" [ngValue]="furColor.name" >{{ furColor.name }}</option>
+              </select>
+            </div>
+          </div>
+
+
+        <div class="form-group division">
+          <label class="mt-2 mb-2">Country of origin</label>
+          <div>
+            <select class="form-select"  aria-label="Floating label select example" [(ngModel)]="model.country">
+              <option selected disabled>Choose...</option>
+              <option *ngFor="let country of countries" [ngValue]="country.name">{{ country.name }}</option>
+            </select>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="country">Country of origin</label>
-          <input type="text"
-                 id="country"
-                 class="form-control"
-                 name="country"
-                 placeholder="Country of origin"
-                 [(ngModel)]="model.country"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary pull-right">
+
+
+        <button type="submit" class="btn btn-primary pull-right button mt-3" >
           <span>Add pet</span>
         </button>
       </form>
