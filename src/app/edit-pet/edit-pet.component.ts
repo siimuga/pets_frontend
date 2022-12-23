@@ -7,10 +7,10 @@ import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-pet',
-  templateUrl: './add-pet.component.html',
-  styleUrls: ['./add-pet.component.css']
+  templateUrl: './edit-pet.component.html',
+  styleUrls: ['./edit-pet.component.css']
 })
-export class AddPetComponent implements OnInit {
+export class EditPetComponent implements OnInit {
   model: PetRequest = {
     name: '',
     code: '',

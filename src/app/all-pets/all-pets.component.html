@@ -7,8 +7,8 @@
     <th scope="col">Code</th>
     <th scope="col">Type</th>
     <th scope="col">Fur color</th>
-    <th scope="col">Country</th>
-    <th scope="col"></th>
+    <th scope="col" >Country</th>
+    <th scope="col" ></th>
   </tr>
   </thead>
   <tbody>
@@ -18,8 +18,8 @@
     <td>{{ pet.code }}</td>
     <td>{{ pet.type }}</td>
     <td>{{ pet.furColor }}</td>
-    <td>{{ pet.country }}</td>
-    <td><button type="button" class="btn btn-primary">
+    <td >{{ pet.country }}</td>
+    <td class="displaying"><button type="button" class="btn btn-primary" (click)="editPet(pet)">
       Edit pet
     </button></td>
   </tr>
