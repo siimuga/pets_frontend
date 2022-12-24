@@ -6,13 +6,15 @@ import {PetRequest} from "../add-pet/add-pet.component";
 import {Types} from "../add-pet/module/types";
 import {FurColor} from "../add-pet/module/fur-color";
 import {Countries} from "../add-pet/module/countries";
+import {PetId} from "../all-pets/module/pet-id";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
   private BASE_URL = "http://localhost:8080/api";
-  private ADD_OR_EDIT_PET_URL = `${this.BASE_URL}/pet`;
+  private MANAGE_PET_URL = `${this.BASE_URL}/pet`;
+  private DEL_PET_URL = `${this.BASE_URL}/del/pet`;
   private ALL_PETS_URL = `${this.BASE_URL}/pets`;
   private ALL_TYPES_URL = `${this.BASE_URL}/type`;
   private ALL_FURS_URL = `${this.BASE_URL}/furcolor`;
@@ -38,11 +40,18 @@ export class ApiService {
   }
 
   sendRequest(feedback: PetRequest): Observable<any> {
-    return this.http.post(this.ADD_OR_EDIT_PET_URL, feedback);
+    return this.http.post(this.MANAGE_PET_URL, feedback);
   }
 
   sendUpdateRequest(feedback: PetRequest): Observable<any> {
-    return this.http.patch(this.ADD_OR_EDIT_PET_URL, feedback);
+    debugger
+    return this.http.patch(this.MANAGE_PET_URL, feedback);
   }
+
+  deletePet(feedback: PetId): Observable<any> {
+    debugger
+    return this.http.patch(this.DEL_PET_URL, feedback);
+  }
+
 
 }

@@ -3,6 +3,7 @@ import {AllPets} from "./module/all-pets";
 import {ApiService} from "../shared/api.service";
 import {Router} from "@angular/router";
 import {EditService} from "../shared/edit.service";
+import {PetId} from "./module/pet-id";
 
 @Component({
   selector: 'app-all-pets',
@@ -11,6 +12,9 @@ import {EditService} from "../shared/edit.service";
 })
 export class AllPetsComponent implements OnInit{
   pets: AllPets[]=[]
+  selectedPet: PetId = {
+    id: 0
+  };
 
   constructor(private apiService:ApiService,
               private editService: EditService,
@@ -35,5 +39,19 @@ export class AllPetsComponent implements OnInit{
   editPet(pet:any) {
     this.editService.pet = pet;
     this.router.navigate(['/editpet']);
+  }
+
+  deletePet(pet:any):void{
+    if(window.confirm('Are sure you want to delete this item ?')){
+      this.selectedPet.id=pet.id
+      this.apiService.deletePet(this.selectedPet).subscribe(
+        res => {
+          location.reload()
+        },
+        err => {
+          alert("An error has occured")
+        }
+      )
+    }
   }
 }

@@ -12,8 +12,4 @@ export class EditService
   pet: any;
   constructor()
   {}
-  doAnyThing()
-  {
-    //do something
-  }
 }

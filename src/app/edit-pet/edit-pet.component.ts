@@ -19,14 +19,6 @@ export class EditPetComponent implements OnInit {
     furColor: '',
     country: ''
   };
-  nrSelect = 47
-  /*firstModel: PetInfo = {
-    name: '',
-    code: '',
-    type: '',
-    furColor: '',
-    country: ''
-  };*/
   types: Types[] = [];
   furColors: FurColor[] = [];
   countries: Countries[] = [];

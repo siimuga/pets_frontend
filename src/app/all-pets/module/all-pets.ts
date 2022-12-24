@@ -1,4 +1,5 @@
 export interface AllPets {
+  id:number,
   seqNr:number;
   name:string;
   code:string;
