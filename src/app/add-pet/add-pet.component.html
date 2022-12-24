@@ -43,7 +43,7 @@
           <label class="mt-2 mb-2">Type</label>
           <div>
             <select class="form-select" aria-label="Floating label select example" (change)="onTypeChange($event)">
-              <option selected disabled>Choose...</option>
+              <option selected disabled value="">Choose...</option>
               <option *ngFor="let type of types" >{{type.name}}</option>
             </select>
           </div>
@@ -53,7 +53,7 @@
             <label class="mt-2 mb-2">Fur color</label>
             <div>
               <select class="form-select"  aria-label="Floating label select example" (change)="onFurChange($event)">
-                <option selected disabled>Choose...</option>
+                <option selected disabled value="">Choose...</option>
                 <option *ngFor="let furColor of furColors"  >{{ furColor.name }}</option>
               </select>
             </div>
@@ -64,7 +64,7 @@
           <label class="mt-2 mb-2">Country of origin</label>
           <div>
             <select class="form-select"  aria-label="Floating label select example" (change)="onCountryChange($event)">
-              <option selected disabled>Choose...</option>
+              <option selected disabled value="">Choose...</option>
               <option *ngFor="let country of countries" >{{ country.name }}</option>
             </select>
           </div>

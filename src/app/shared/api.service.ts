@@ -12,7 +12,7 @@ import {Countries} from "../add-pet/module/countries";
 })
 export class ApiService {
   private BASE_URL = "http://localhost:8080/api";
-  private ADD_PET_URL = `${this.BASE_URL}/pet`;
+  private ADD_OR_EDIT_PET_URL = `${this.BASE_URL}/pet`;
   private ALL_PETS_URL = `${this.BASE_URL}/pets`;
   private ALL_TYPES_URL = `${this.BASE_URL}/type`;
   private ALL_FURS_URL = `${this.BASE_URL}/furcolor`;
@@ -38,7 +38,11 @@ export class ApiService {
   }
 
   sendRequest(feedback: PetRequest): Observable<any> {
-    return this.http.post(this.ADD_PET_URL, feedback);
+    return this.http.post(this.ADD_OR_EDIT_PET_URL, feedback);
+  }
+
+  sendUpdateRequest(feedback: PetRequest): Observable<any> {
+    return this.http.patch(this.ADD_OR_EDIT_PET_URL, feedback);
   }
 
 }

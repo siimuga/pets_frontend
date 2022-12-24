@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AllPets} from "./module/all-pets";
 import {ApiService} from "../shared/api.service";
 import {Router} from "@angular/router";
+import {EditService} from "../shared/edit.service";
 
 @Component({
   selector: 'app-all-pets',
@@ -12,6 +13,7 @@ export class AllPetsComponent implements OnInit{
   pets: AllPets[]=[]
 
   constructor(private apiService:ApiService,
+              private editService: EditService,
               private router: Router) {
   }
 
@@ -31,6 +33,7 @@ export class AllPetsComponent implements OnInit{
   }
 
   editPet(pet:any) {
-    this.router.navigate(['/editpet'],pet);
+    this.editService.pet = pet;
+    this.router.navigate(['/editpet']);
   }
 }

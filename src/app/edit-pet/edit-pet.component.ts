@@ -4,6 +4,7 @@ import {Types} from "./module/types";
 import {FurColor} from "./module/fur-color";
 import {Countries} from "./module/countries";
 import {Router} from "@angular/router";
+import {EditService} from "../shared/edit.service";
 
 @Component({
   selector: 'app-add-pet',
@@ -18,15 +19,25 @@ export class EditPetComponent implements OnInit {
     furColor: '',
     country: ''
   };
+  nrSelect = 47
+  /*firstModel: PetInfo = {
+    name: '',
+    code: '',
+    type: '',
+    furColor: '',
+    country: ''
+  };*/
   types: Types[] = [];
   furColors: FurColor[] = [];
   countries: Countries[] = [];
 
   constructor(private apiService: ApiService,
+              private editService: EditService,
               private router: Router) {
   }
 
   ngOnInit() {
+    this.model = this.editService.pet;
     this.findAllTypes()
     this.findAllFurColors()
     this.findAllCountries()
@@ -48,8 +59,8 @@ export class EditPetComponent implements OnInit {
     this.model.country = event.target.value;
   }
 
-  sendRequest(): void {
-    this.apiService.sendRequest(this.model).subscribe(
+  sendUpdateRequest(): void {
+    this.apiService.sendUpdateRequest(this.model).subscribe(
       res => {
         this.goAllPets()
       },

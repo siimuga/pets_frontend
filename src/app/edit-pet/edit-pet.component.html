@@ -1,9 +1,9 @@
-<p class="fs-2 fw-semibold text-center">Add a new pet</p>
+<p class="fs-2 fw-semibold text-center">Edit pet</p>
 <div class="container">
   <div class="row">
     <div class="offset-3"></div>
     <div class="inserting">
-      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && sendRequest()" novalidate class="feedback-form">
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && sendUpdateRequest()" novalidate class="feedback-form" >
         <div class="form-group division">
           <label for="name" class="mb-2">Name</label>
           <input type="text"
@@ -42,9 +42,9 @@
         <div class="form-group division">
           <label class="mt-2 mb-2">Type</label>
           <div>
-            <select class="form-select" aria-label="Floating label select example" (change)="onTypeChange($event)">
-              <option selected disabled>Choose...</option>
-              <option *ngFor="let type of types" >{{type.name}}</option>
+            <select class="form-select" aria-label="Floating label select example" (change)="onTypeChange($event)" >
+              <option selected disabled value="">Choose...</option>
+              <option *ngFor="let type of types" [value]="type.name" [selected]="type.name==model.type">{{type.name}}</option>
             </select>
           </div>
         </div>
@@ -52,9 +52,9 @@
           <div class="form-group division">
             <label class="mt-2 mb-2">Fur color</label>
             <div>
-              <select class="form-select"  aria-label="Floating label select example" (change)="onFurChange($event)">
+              <select class="form-select"  aria-label="Floating label select example" (change)="onFurChange($event)" [ngModel]="model.furColor">
                 <option selected disabled>Choose...</option>
-                <option *ngFor="let furColor of furColors"  >{{ furColor.name }}</option>
+                <option *ngFor="let furColor of furColors" [selected]="furColor.name==model.furColor">{{ furColor.name }}</option>
               </select>
             </div>
           </div>
@@ -63,16 +63,16 @@
         <div class="form-group division">
           <label class="mt-2 mb-2">Country of origin</label>
           <div>
-            <select class="form-select"  aria-label="Floating label select example" (change)="onCountryChange($event)">
+            <select class="form-select"  aria-label="Floating label select example" (change)="onCountryChange($event)" [ngModel]="model.country">
               <option selected disabled>Choose...</option>
-              <option *ngFor="let country of countries" >{{ country.name }}</option>
+              <option *ngFor="let country of countries" [selected]="country.name==model.country">{{ country.name }}</option>
             </select>
           </div>
         </div>
 
 
         <button type="submit" class="btn btn-primary pull-right button mt-3" >
-          <span>Add pet</span>
+          <span>Edit pet</span>
         </button>
       </form>
     </div>
