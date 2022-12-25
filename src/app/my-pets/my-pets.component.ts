@@ -1,16 +1,17 @@
 import {Component, OnInit} from '@angular/core';
-import {AllPets} from "./module/all-pets";
+import {MyPets} from "./module/my-pets";
 import {ApiService} from "../shared/api.service";
 import {Router} from "@angular/router";
 import {EditService} from "../shared/edit.service";
 
 @Component({
   selector: 'app-all-pets',
-  templateUrl: './all-pets.component.html',
-  styleUrls: ['./all-pets.component.css']
+  templateUrl: './my-pets.component.html',
+  styleUrls: ['./my-pets.component.css']
 })
-export class AllPetsComponent implements OnInit{
-  pets: AllPets[]=[]
+export class MyPetsComponent implements OnInit{
+  userId:number=2
+  pets: MyPets[]=[]
 
   constructor(private apiService:ApiService,
               private editService: EditService,
@@ -18,12 +19,11 @@ export class AllPetsComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.findAllPets();
-    sessionStorage.setItem("userId", String(2));
+    this.findAllMyPets();
   }
 
-  public findAllPets() {
-    this.apiService.findAllPets().subscribe(
+  public findAllMyPets() {
+    this.apiService.findAllMyPets(this.userId).subscribe(
       res=>{
         this.pets = res;
       },

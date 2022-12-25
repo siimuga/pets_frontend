@@ -10,6 +10,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {EditPetComponent} from "./edit-pet/edit-pet.component";
+import {MyPetsComponent} from "./my-pets/my-pets.component";
 
 const appRoutes:Routes=[
   {
@@ -19,6 +20,10 @@ const appRoutes:Routes=[
   {
     path:'allpets',
     component:AllPetsComponent
+  },
+  {
+    path:'mypets',
+    component:MyPetsComponent
   },
   {
     path:'editpet',
@@ -40,6 +45,7 @@ const appRoutes:Routes=[
     AppComponent,
     NavigationComponent,
     AllPetsComponent,
+    MyPetsComponent,
     AddPetComponent,
     EditPetComponent,
     NotFoundComponent

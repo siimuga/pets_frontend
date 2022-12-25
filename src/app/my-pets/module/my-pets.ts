@@ -1,4 +1,4 @@
-export interface AllPets {
+export interface MyPets {
   id:number,
   seqNr:number;
   name:string;
@@ -6,5 +6,4 @@ export interface AllPets {
   type:string;
   furColor:string;
   country:string;
-  owner:string;
 }

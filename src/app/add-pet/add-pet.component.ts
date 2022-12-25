@@ -16,7 +16,9 @@ export class AddPetComponent implements OnInit {
     code: '',
     type: '',
     furColor: '',
-    country: ''
+    country: '',
+    userId:2
+
   };
   types: Types[] = [];
   furColors: FurColor[] = [];
@@ -27,6 +29,7 @@ export class AddPetComponent implements OnInit {
   }
 
   ngOnInit() {
+    sessionStorage.getItem('userId')
     this.findAllTypes()
     this.findAllFurColors()
     this.findAllCountries()
@@ -99,4 +102,5 @@ export interface PetRequest {
   type: string;
   furColor: string;
   country: string;
+  userId: number;
 }

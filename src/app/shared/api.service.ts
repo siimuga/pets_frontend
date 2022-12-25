@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {AllPets} from "../all-pets/module/all-pets";
 import {PetRequest} from "../add-pet/add-pet.component";
 import {Types} from "../add-pet/module/types";
 import {FurColor} from "../add-pet/module/fur-color";
 import {Countries} from "../add-pet/module/countries";
-import {PetId} from "../all-pets/module/pet-id";
+import {MyPets} from "../my-pets/module/my-pets";
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,8 @@ import {PetId} from "../all-pets/module/pet-id";
 export class ApiService {
   private BASE_URL = "http://localhost:8080/api";
   private MANAGE_PET_URL = `${this.BASE_URL}/pet`;
-  private DEL_PET_URL = `${this.BASE_URL}/del/pet`;
   private ALL_PETS_URL = `${this.BASE_URL}/pets`;
+  private ALL_MY_PETS_URL = `${this.BASE_URL}/pets/user`;
   private ALL_TYPES_URL = `${this.BASE_URL}/type`;
   private ALL_FURS_URL = `${this.BASE_URL}/furcolor`;
   private ALL_COUNTRIES_URL = `${this.BASE_URL}/country`;
@@ -48,10 +48,15 @@ export class ApiService {
     return this.http.patch(this.MANAGE_PET_URL, feedback);
   }
 
-  deletePet(feedback: PetId): Observable<any> {
-    debugger
-    return this.http.patch(this.DEL_PET_URL, feedback);
+  findAllMyPets(userId:number): Observable<MyPets[]>{
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("userId",userId);
+    return this.http.get<MyPets[]>(this.ALL_MY_PETS_URL,{params:queryParams});
   }
 
-
+  deletePet(petId:number): Observable<any> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("petId",petId);
+    return this.http.delete(this.MANAGE_PET_URL,{params:queryParams});
+  }
 }
