@@ -29,14 +29,19 @@ export class AddPetComponent implements OnInit {
   }
 
   ngOnInit() {
-    sessionStorage.getItem('userId')
+    this.model.userId = Number(sessionStorage.getItem('userId'));
     this.findAllTypes()
     this.findAllFurColors()
     this.findAllCountries()
   }
 
-  goAllPets(){
-    this.router.navigate(['/allpets']);
+  onLogOut() {
+    sessionStorage.removeItem("userId");
+    this.router.navigate(['/']);
+  }
+
+  goMyPets(){
+    this.router.navigate(['/mypets']);
   }
 
   onTypeChange(event: any) {
@@ -54,7 +59,7 @@ export class AddPetComponent implements OnInit {
   sendRequest(): void {
     this.apiService.sendRequest(this.model).subscribe(
       res => {
-        this.goAllPets()
+        this.goMyPets()
       },
       err => {
         alert("An error has occured")

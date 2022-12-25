@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 import {EditService} from "../shared/edit.service";
 
 @Component({
-  selector: 'app-add-pet',
+  selector: 'app-edit-pet',
   templateUrl: './edit-pet.component.html',
   styleUrls: ['./edit-pet.component.css']
 })
@@ -37,8 +37,13 @@ export class EditPetComponent implements OnInit {
     this.findAllCountries()
   }
 
-  goAllPets(){
-    this.router.navigate(['/allpets']);
+  onLogOut() {
+    sessionStorage.removeItem("userId");
+    this.router.navigate(['/']);
+  }
+
+  goMyPets(){
+    this.router.navigate(['/mypets']);
   }
 
   onTypeChange(event: any) {
@@ -56,7 +61,7 @@ export class EditPetComponent implements OnInit {
   sendUpdateRequest(): void {
     this.apiService.sendUpdateRequest(this.model).subscribe(
       res => {
-        this.goAllPets()
+        this.goMyPets()
       },
       err => {
         alert("An error has occured")

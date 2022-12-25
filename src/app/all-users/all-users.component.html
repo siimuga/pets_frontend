@@ -15,28 +15,24 @@
 </div>
   </div>
 </nav>
-<p class="fs-2 fw-semibold text-center">Pets</p>
+<p class="fs-2 fw-semibold text-center">Users</p>
 <table class="table table-hover">
   <thead>
   <tr>
     <th scope="col">#</th>
-    <th scope="col">Name</th>
-    <th scope="col">Code</th>
-    <th scope="col">Type</th>
-    <th scope="col">Fur color</th>
-    <th scope="col" >Country</th>
-    <th scope="col" >Owner</th>
+    <th scope="col">Username</th>
+    <th scope="col">Password</th>
+    <th scope="col">Active pets</th>
+    <th scope="col">Past pets</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let pet of pets">
-    <th scope="row">{{ pet.seqNr }}</th>
-    <td>{{ pet.name }}</td>
-    <td>{{ pet.code }}</td>
-    <td>{{ pet.type }}</td>
-    <td>{{ pet.furColor }}</td>
-    <td >{{ pet.country }}</td>
-    <td >{{ pet.owner }}</td>
+  <tr *ngFor="let user of users">
+    <th scope="row">{{ user.seqNr }}</th>
+    <td>{{ user.name }}</td>
+    <td>{{ user.password }}</td>
+    <td>{{ user.petsActive }}</td>
+    <td>{{ user.petsDeactive }}</td>
   </tr>
   </tbody>
 </table>

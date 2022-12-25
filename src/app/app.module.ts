@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './navigation/navigation.component';
 import { AllPetsComponent } from './all-pets/all-pets.component';
 import { AddPetComponent } from './add-pet/add-pet.component';
 import {Router, RouterModule, Routes} from "@angular/router";
@@ -11,6 +9,8 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {EditPetComponent} from "./edit-pet/edit-pet.component";
 import {MyPetsComponent} from "./my-pets/my-pets.component";
+import {LoginCreateComponent} from "./login-create/login-create.component";
+import {AllUsersComponent} from "./all-users/all-users.component";
 
 const appRoutes:Routes=[
   {
@@ -18,12 +18,20 @@ const appRoutes:Routes=[
     component:AddPetComponent
   },
   {
-    path:'allpets',
+    path:'admin',
     component:AllPetsComponent
+  },
+  {
+    path:'admin/users',
+    component:AllUsersComponent
   },
   {
     path:'mypets',
     component:MyPetsComponent
+  },
+  {
+    path:'login',
+    component:LoginCreateComponent
   },
   {
     path:'editpet',
@@ -31,7 +39,7 @@ const appRoutes:Routes=[
   },
   {
     path:'',
-    component:AllPetsComponent,
+    component:LoginCreateComponent,
     pathMatch:'full'
   },
   {
@@ -43,11 +51,12 @@ const appRoutes:Routes=[
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
     AllPetsComponent,
+    AllUsersComponent,
     MyPetsComponent,
     AddPetComponent,
     EditPetComponent,
+    LoginCreateComponent,
     NotFoundComponent
   ],
   imports: [

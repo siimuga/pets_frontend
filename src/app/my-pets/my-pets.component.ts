@@ -5,12 +5,12 @@ import {Router} from "@angular/router";
 import {EditService} from "../shared/edit.service";
 
 @Component({
-  selector: 'app-all-pets',
+  selector: 'app-my-pets',
   templateUrl: './my-pets.component.html',
   styleUrls: ['./my-pets.component.css']
 })
 export class MyPetsComponent implements OnInit{
-  userId:number=2
+  userId: number = Number(sessionStorage.getItem("userId"));
   pets: MyPets[]=[]
 
   constructor(private apiService:ApiService,
@@ -31,6 +31,11 @@ export class MyPetsComponent implements OnInit{
         alert("An error has occured")
       }
     )
+  }
+
+  onLogOut() {
+    sessionStorage.removeItem("userId");
+    this.router.navigate(['/']);
   }
 
   editPet(pet:any) {

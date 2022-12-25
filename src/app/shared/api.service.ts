@@ -7,6 +7,9 @@ import {Types} from "../add-pet/module/types";
 import {FurColor} from "../add-pet/module/fur-color";
 import {Countries} from "../add-pet/module/countries";
 import {MyPets} from "../my-pets/module/my-pets";
+import {Login} from "../login-create/module/login";
+import {Create} from "../login-create/module/create";
+import {AllUsers} from "../all-users/module/all-users";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +17,10 @@ import {MyPets} from "../my-pets/module/my-pets";
 export class ApiService {
   private BASE_URL = "http://localhost:8080/api";
   private MANAGE_PET_URL = `${this.BASE_URL}/pet`;
+  private LOGIN_URL = `${this.BASE_URL}/login`;
+  private REGISTER_URL = `${this.BASE_URL}/register`;
   private ALL_PETS_URL = `${this.BASE_URL}/pets`;
+  private ALL_USERS_URL = `${this.BASE_URL}/users`;
   private ALL_MY_PETS_URL = `${this.BASE_URL}/pets/user`;
   private ALL_TYPES_URL = `${this.BASE_URL}/type`;
   private ALL_FURS_URL = `${this.BASE_URL}/furcolor`;
@@ -26,6 +32,10 @@ export class ApiService {
   findAllPets(): Observable<AllPets[]>{
     return this.http.get<AllPets[]>(this.ALL_PETS_URL);
 }
+
+  findAllUsers(): Observable<AllUsers[]>{
+    return this.http.get<AllUsers[]>(this.ALL_USERS_URL);
+  }
 
   findAllTypes(): Observable<Types[]>{
     return this.http.get<Types[]>(this.ALL_TYPES_URL);
@@ -41,6 +51,14 @@ export class ApiService {
 
   sendRequest(feedback: PetRequest): Observable<any> {
     return this.http.post(this.MANAGE_PET_URL, feedback);
+  }
+
+  onLogIn(feedback: Login): Observable<any> {
+    return this.http.post(this.LOGIN_URL, feedback);
+  }
+
+  onCreate(feedback: Create): Observable<any> {
+    return this.http.post(this.REGISTER_URL, feedback);
   }
 
   sendUpdateRequest(feedback: PetRequest): Observable<any> {

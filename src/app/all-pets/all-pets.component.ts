@@ -33,6 +33,11 @@ export class AllPetsComponent implements OnInit{
     )
   }
 
+  onLogOut() {
+    sessionStorage.removeItem("userId");
+    this.router.navigate(['/']);
+  }
+
   editPet(pet:any) {
     this.editService.pet = pet;
     this.router.navigate(['/editpet']);

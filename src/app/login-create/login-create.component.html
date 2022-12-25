@@ -1,0 +1,115 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="collapse navbar-collapse" style="margin-left: 10px" id="navbarColor01">
+    <div>
+      <ul class="navbar-nav mr-auto ">
+        <li class="nav-item">
+          <a class="nav-link ">PET MANAGEMENT</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div>
+  <div class="container-xxl">
+    <div class="row">
+      <div class="col-xl">
+      </div>
+      <div class="row row-cols-2" style="margin-top: 20px">
+        <div class="col">
+          <h3><span style="color: #2c3e50">Log in</span></h3>
+          <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && onLogIn()" novalidate class="feedback-form">
+            <table class="table table-hover">
+              <tbody>
+              <tr>
+                <th>Username</th>
+                <td>
+                  <input type="text" placeholder="username"
+                         [(ngModel)]="login.username"
+                         name="username"
+                         #name="ngModel"
+                         [ngClass]="{ 'is-invalid': f.submitted && name.invalid}"
+                         required
+                  />
+                  <div *ngIf="f.submitted && name.invalid" class="invalid-input">
+                    <div *ngIf="name.errors?.['required']" class="fst-italic text-danger invalid-input">Field is
+                      required
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>Password</th>
+                <td><input type="password" placeholder="password"
+                           [(ngModel)]="login.password"
+                           name="password"
+                           #pw="ngModel"
+                           [ngClass]="{ 'is-invalid': f.submitted && pw.invalid}"
+                           required
+                />
+                  <div *ngIf="f.submitted && pw.invalid" class="invalid-input">
+                    <div *ngIf="pw.errors?.['required']" class="fst-italic text-danger invalid-input">Field is required
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <button type="submit" style="margin: 5px" class="btn btn-outline-dark">Login
+            </button>
+          </form>
+        </div>
+
+
+        <div class="col">
+          <h3><span style="color: #2c3e50">Create a new account</span></h3>
+          <form name="form" #fc="ngForm" (ngSubmit)="fc.form.valid && onCreate()" novalidate class="feedback-form">
+            <table class="table table-hover">
+              <tbody>
+              <tr>
+                <th>Username</th>
+                <td>
+                  <input type="text" placeholder="username"
+                         [(ngModel)]="create.username"
+                         name="usernameCreate"
+                         #nameCreate="ngModel"
+                         [ngClass]="{ 'is-invalid': fc.submitted && nameCreate.invalid}"
+                         required
+                          minlength="5"
+                  >
+                  <div *ngIf="fc.submitted && nameCreate.invalid" class="invalid-input">
+                    <div *ngIf="nameCreate.errors?.['required']" class="fst-italic text-danger invalid-input">Field is required
+                    </div>
+                    <div *ngIf="nameCreate.errors?.['minlength']" class="fst-italic text-danger invalid-input">Username has to be 5 characters long
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>Password</th>
+                <td><input type="password" placeholder="password"
+                           [(ngModel)]="create.password"
+                           name="passwordCreate"
+                           #pwCreate="ngModel"
+                           [ngClass]="{ 'is-invalid': fc.submitted && pwCreate.invalid}"
+                           required
+                           minlength="6"
+                >
+                  <div *ngIf="fc.submitted && pwCreate.invalid" class="invalid-input">
+                    <div *ngIf="pwCreate.errors?.['required']" class="fst-italic text-danger invalid-input">Field is required
+                    </div>
+                    <div *ngIf="nameCreate.errors?.['minlength']" class="fst-italic text-danger invalid-input">Password has to be 6 characters long
+                    </div>
+                  </div>
+
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <button type="submit" style="margin: 5px" class="btn btn-outline-dark">Create account
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
