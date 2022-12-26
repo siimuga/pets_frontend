@@ -1,21 +1,41 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="collapse navbar-collapse" style="margin-left: 10px" id="navbarColor01">
-<div>
-  <ul class="navbar-nav mr-auto ">
-    <li class="nav-item active">
-      <a class="nav-link" routerLink="/admin">All pets</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link " routerLink="/admin/users">All users</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link " routerLink="/" (click)="onLogOut()">Logout</a>
-    </li>
-  </ul>
-</div>
+    <div>
+      <ul class="navbar-nav mr-auto ">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/admin">All pets</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " routerLink="/admin/users">All users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " routerLink="/" (click)="onLogOut()">Logout</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
 <p class="fs-2 fw-semibold text-center">Pets</p>
+
+<div class="form-group division selected">
+  <div>
+    <select class="form-select" aria-label="Floating label select example" (change)="onSelectChange($event)">
+      <option selected value="nameAsc">Name A->Z</option>
+      <option value="nameDes">Name Z->A</option>
+      <option value="codeAsc">Code 0->1</option>
+      <option value="codeDes">Code 1->0</option>
+      <option value="typeAsc">Type A->Z</option>
+      <option value="typeDes">Type Z->A</option>
+      <option value="furAsc">Fur color A->Z</option>
+      <option value="furDes">Fur color Z->A</option>
+      <option value="countryAsc">Country A->Z</option>
+      <option value="countryDes">Country Z->A</option>
+      <option value="ownerAsc">Owner A->Z</option>
+      <option value="ownerDes">Owner Z->A</option>
+    </select>
+  </div>
+</div>
+
 <table class="table table-hover">
   <thead>
   <tr>
@@ -24,8 +44,8 @@
     <th scope="col">Code</th>
     <th scope="col">Type</th>
     <th scope="col">Fur color</th>
-    <th scope="col" >Country</th>
-    <th scope="col" >Owner</th>
+    <th scope="col">Country</th>
+    <th scope="col">Owner</th>
   </tr>
   </thead>
   <tbody>
@@ -35,8 +55,8 @@
     <td>{{ pet.code }}</td>
     <td>{{ pet.type }}</td>
     <td>{{ pet.furColor }}</td>
-    <td >{{ pet.country }}</td>
-    <td >{{ pet.owner }}</td>
+    <td>{{ pet.country }}</td>
+    <td>{{ pet.owner }}</td>
   </tr>
   </tbody>
 </table>

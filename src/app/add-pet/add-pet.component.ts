@@ -57,6 +57,7 @@ export class AddPetComponent implements OnInit {
   }
 
   sendRequest(): void {
+    debugger
     this.apiService.sendRequest(this.model).subscribe(
       res => {
         this.goMyPets()

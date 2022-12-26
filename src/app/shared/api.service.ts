@@ -19,9 +19,9 @@ export class ApiService {
   private MANAGE_PET_URL = `${this.BASE_URL}/pet`;
   private LOGIN_URL = `${this.BASE_URL}/login`;
   private REGISTER_URL = `${this.BASE_URL}/register`;
-  private ALL_PETS_URL = `${this.BASE_URL}/pets`;
+  private SORT_PETS_URL = `${this.BASE_URL}/pets/sort`;
   private ALL_USERS_URL = `${this.BASE_URL}/users`;
-  private ALL_MY_PETS_URL = `${this.BASE_URL}/pets/user`;
+  private SORT_MY_PETS_URL = `${this.BASE_URL}/mypets/sort`;
   private ALL_TYPES_URL = `${this.BASE_URL}/type`;
   private ALL_FURS_URL = `${this.BASE_URL}/furcolor`;
   private ALL_COUNTRIES_URL = `${this.BASE_URL}/country`;
@@ -29,9 +29,11 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
-  findAllPets(): Observable<AllPets[]>{
-    return this.http.get<AllPets[]>(this.ALL_PETS_URL);
-}
+  sortAllPets(sort:string): Observable<AllPets[]>{
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("sort",sort);
+    return this.http.get<AllPets[]>(this.SORT_PETS_URL,{params:queryParams});
+  }
 
   findAllUsers(): Observable<AllUsers[]>{
     return this.http.get<AllUsers[]>(this.ALL_USERS_URL);
@@ -66,10 +68,10 @@ export class ApiService {
     return this.http.patch(this.MANAGE_PET_URL, feedback);
   }
 
-  findAllMyPets(userId:number): Observable<MyPets[]>{
+  sortMyPets(userId:number, sort:string): Observable<MyPets[]>{
     let queryParams = new HttpParams();
-    queryParams = queryParams.append("userId",userId);
-    return this.http.get<MyPets[]>(this.ALL_MY_PETS_URL,{params:queryParams});
+    queryParams = queryParams.append("userId",userId).append("sort",sort);
+    return this.http.get<MyPets[]>(this.SORT_MY_PETS_URL,{params:queryParams});
   }
 
   deletePet(petId:number): Observable<any> {

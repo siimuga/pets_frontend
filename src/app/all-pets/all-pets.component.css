@@ -2,5 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+
+}
+
+.selected {
+  display: flex;
+  flex-direction: row;
 }
 

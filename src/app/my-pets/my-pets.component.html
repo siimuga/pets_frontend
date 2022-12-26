@@ -14,6 +14,24 @@
   </div>
 </nav>
 <p class="fs-2 fw-semibold text-center">Pets</p>
+
+<div class="form-group division selected">
+  <div>
+    <select class="form-select" aria-label="Floating label select example" (change)="onSelectChange($event)" >
+      <option selected value="nameAsc">Name A->Z</option>
+      <option value="nameDes">Name Z->A</option>
+      <option value="codeAsc">Code 0->1</option>
+      <option value="codeDes">Code 1->0</option>
+      <option value="typeAsc">Type A->Z</option>
+      <option value="typeDes">Type Z->A</option>
+      <option value="furAsc">Fur color A->Z</option>
+      <option value="furDes">Fur color Z->A</option>
+      <option value="countryAsc">Country A->Z</option>
+      <option value="countryDes">Country Z->A</option>
+    </select>
+  </div>
+</div>
+
 <table class="table table-hover">
   <thead>
   <tr>

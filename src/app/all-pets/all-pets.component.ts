@@ -11,6 +11,7 @@ import {EditService} from "../shared/edit.service";
 })
 export class AllPetsComponent implements OnInit{
   pets: AllPets[]=[]
+  sort:string='nameAsc'
 
   constructor(private apiService:ApiService,
               private editService: EditService,
@@ -23,7 +24,7 @@ export class AllPetsComponent implements OnInit{
   }
 
   public findAllPets() {
-    this.apiService.findAllPets().subscribe(
+    this.apiService.sortAllPets(this.sort).subscribe(
       res=>{
         this.pets = res;
       },
@@ -42,6 +43,19 @@ export class AllPetsComponent implements OnInit{
     this.editService.pet = pet;
     this.router.navigate(['/editpet']);
   }
+
+  onSelectChange(event: any) {
+    this.sort = event.target.value;
+    this.apiService.sortAllPets(this.sort).subscribe(
+      res=>{
+        this.pets = res;
+      },
+      err=> {
+        alert("An error has occured")
+      }
+    )
+  }
+
 
   deletePet(pet:any):void{
     if(window.confirm('Are sure you want to delete this item ?')){

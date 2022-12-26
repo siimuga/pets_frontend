@@ -11,7 +11,8 @@ import {EditService} from "../shared/edit.service";
 })
 export class MyPetsComponent implements OnInit{
   userId: number = Number(sessionStorage.getItem("userId"));
-  pets: MyPets[]=[]
+  pets: MyPets[] = []
+  sort:string='nameAsc'
 
   constructor(private apiService:ApiService,
               private editService: EditService,
@@ -23,7 +24,19 @@ export class MyPetsComponent implements OnInit{
   }
 
   public findAllMyPets() {
-    this.apiService.findAllMyPets(this.userId).subscribe(
+    this.apiService.sortMyPets(this.userId, this.sort).subscribe(
+      res=>{
+        this.pets = res;
+      },
+      err=> {
+        alert("An error has occured")
+      }
+    )
+  }
+
+  onSelectChange(event: any) {
+    this.sort = event.target.value;
+    this.apiService.sortMyPets(this.userId, this.sort).subscribe(
       res=>{
         this.pets = res;
       },
