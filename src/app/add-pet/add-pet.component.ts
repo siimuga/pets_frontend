@@ -17,7 +17,7 @@ export class AddPetComponent implements OnInit {
     type: '',
     furColor: '',
     country: '',
-    userId:2
+    userId: 0
 
   };
   types: Types[] = [];
@@ -30,6 +30,7 @@ export class AddPetComponent implements OnInit {
 
   ngOnInit() {
     this.model.userId = Number(sessionStorage.getItem('userId'));
+    this.getNewCode()
     this.findAllTypes()
     this.findAllFurColors()
     this.findAllCountries()
@@ -40,7 +41,7 @@ export class AddPetComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  goMyPets(){
+  goMyPets() {
     this.router.navigate(['/mypets']);
   }
 
@@ -54,6 +55,17 @@ export class AddPetComponent implements OnInit {
 
   onCountryChange(event: any) {
     this.model.country = event.target.value;
+  }
+
+  public getNewCode() {
+    this.apiService.getNewCode(this.model.userId).subscribe(
+      res => {
+        this.model.code = res;
+      },
+      err => {
+        alert("An error has occured")
+      }
+    )
   }
 
   sendRequest(): void {

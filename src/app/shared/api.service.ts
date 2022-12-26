@@ -25,8 +25,15 @@ export class ApiService {
   private ALL_TYPES_URL = `${this.BASE_URL}/type`;
   private ALL_FURS_URL = `${this.BASE_URL}/furcolor`;
   private ALL_COUNTRIES_URL = `${this.BASE_URL}/country`;
+  private NEW_CODE_URL = `${this.BASE_URL}/code`;
 
   constructor(private http: HttpClient) {
+  }
+
+  getNewCode(userId: number): Observable<any>{
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("userId",userId);
+    return this.http.get<any>(this.NEW_CODE_URL,{params:queryParams});
   }
 
   sortAllPets(sort:string): Observable<AllPets[]>{

@@ -74,7 +74,9 @@
                          #nameCreate="ngModel"
                          [ngClass]="{ 'is-invalid': fc.submitted && nameCreate.invalid}"
                          required
+                         maxlength="12"
                           minlength="5"
+                         (keydown.space)="$event.preventDefault()"
                   >
                   <div *ngIf="fc.submitted && nameCreate.invalid" class="invalid-input">
                     <div *ngIf="nameCreate.errors?.['required']" class="fst-italic text-danger invalid-input">Field is required
@@ -92,7 +94,9 @@
                            #pwCreate="ngModel"
                            [ngClass]="{ 'is-invalid': fc.submitted && pwCreate.invalid}"
                            required
+                           maxlength="24"
                            minlength="6"
+                           (keydown.space)="$event.preventDefault()"
                 >
                   <div *ngIf="fc.submitted && pwCreate.invalid" class="invalid-input">
                     <div *ngIf="pwCreate.errors?.['required']" class="fst-italic text-danger invalid-input">Field is required

@@ -36,22 +36,14 @@
           </div>
         </div>
         <div class="form-group division">
-          <label for="code"  class="mt-2 mb-2">Code</label>
+          <label  class="mt-2 mb-2">Code</label>
           <input type="number"
                  id="code"
                  class="form-control"
                  name="code"
-                 placeholder="Code"
                  [(ngModel)]="model.code"
-                 #code="ngModel"
-                 [ngClass]="{ 'is-invalid': f.submitted && code.invalid}"
-                 required min=100000 max=999999 />
-          <div *ngIf="f.submitted && code.invalid" class="invalid-input">
-            <div *ngIf="code.errors?.['required']" class="fst-italic text-danger invalid-input">Field is required
-            </div>
-            <div *ngIf="code.errors?.['min'] || code.errors?.['max']" class="fst-italic text-danger invalid-input">Code has to be 6 characters long
-            </div>
-          </div>
+                 disabled
+          />
         </div>
 
         <div class="form-group division">
