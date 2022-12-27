@@ -3,6 +3,7 @@ import {ApiService} from "../shared/api.service";
 import {Router} from "@angular/router";
 import {Login} from "./module/login";
 import {Create} from "./module/create";
+import {catchError, of} from "rxjs";
 
 @Component({
   selector: 'app-login-create',
@@ -45,10 +46,11 @@ export class LoginCreateComponent implements OnInit{
         }
       },
       err => {
-        alert("Wrong username or password")
+        alert(err.error.detail)
       }
     )
   }
+
 
   onCreate(): void {
     this.apiService.onCreate(this.create).subscribe(
@@ -57,7 +59,7 @@ export class LoginCreateComponent implements OnInit{
         location.reload()
       },
       err => {
-        alert("An error occured")
+        alert(err.error.detail)
       }
     )
   }

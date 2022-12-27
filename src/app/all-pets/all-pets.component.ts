@@ -29,7 +29,7 @@ export class AllPetsComponent implements OnInit{
         this.pets = res;
       },
       err=> {
-        alert("An error has occured")
+        alert(err.error.detail)
       }
     )
   }
@@ -51,7 +51,7 @@ export class AllPetsComponent implements OnInit{
         this.pets = res;
       },
       err=> {
-        alert("An error has occured")
+        alert(err.error.detail)
       }
     )
   }
@@ -64,7 +64,7 @@ export class AllPetsComponent implements OnInit{
           location.reload()
         },
         err => {
-          alert("An error has occured")
+          alert(err.error.detail)
         }
       )
     }

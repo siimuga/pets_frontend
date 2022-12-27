@@ -27,7 +27,7 @@ export class AllUsersComponent implements OnInit{
         this.users = res;
       },
       err=> {
-        alert("An error has occured")
+        alert(err.error.detail)
       }
     )
   }
