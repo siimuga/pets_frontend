@@ -3,7 +3,6 @@ import {ApiService} from "../shared/api.service";
 import {Router} from "@angular/router";
 import {Login} from "./module/login";
 import {Create} from "./module/create";
-import {catchError, of} from "rxjs";
 
 @Component({
   selector: 'app-login-create',

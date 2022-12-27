@@ -8,7 +8,7 @@
         <a class="nav-link " routerLink="/addpet">Add pet</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " routerLink="/"  (click)="onLogOut()">Logout</a>
+        <a class="nav-link " routerLink="/" (click)="onLogOut()">Logout</a>
       </li>
     </ul>
   </div>
@@ -18,25 +18,33 @@
   <div class="row">
     <div class="offset-3"></div>
     <div class="inserting">
-      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && sendUpdateRequest()" novalidate class="feedback-form" >
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && sendUpdateRequest()" class="feedback-form">
         <div class="form-group division">
           <label for="name" class="mb-2">Name</label>
           <input type="text"
                  id="name"
-                 class="form-control"
+                 class="form-control capital"
                  name="name"
                  placeholder="Name"
                  [(ngModel)]="model.name"
                  #name="ngModel"
                  [ngClass]="{ 'is-invalid': f.submitted && name.invalid}"
+                 pattern="^[a-zA-ZÜÕÖÄüõöä]+[a-z -üõöä]+[a-züõöä]$"
+                 maxlength="24"
+                 minlength="3"
                  required/>
           <div *ngIf="f.submitted && name.invalid" class="invalid-input">
             <div *ngIf="name.errors?.['required']" class="fst-italic text-danger invalid-input">Field is required
             </div>
+            <div *ngIf="name.errors?.['minlength']" class="fst-italic text-danger invalid-input">Name
+              has to be atleast 3 characters long
+            </div>
+            <div *ngIf="name.errors?.['pattern']" class="fst-italic text-danger invalid-input">Invalid name
+            </div>
           </div>
         </div>
         <div class="form-group division">
-          <label  class="mt-2 mb-2">Code</label>
+          <label class="mt-2 mb-2">Code</label>
           <input type="number"
                  id="code"
                  class="form-control"
@@ -49,35 +57,52 @@
         <div class="form-group division">
           <label class="mt-2 mb-2">Type</label>
           <div>
-            <select class="form-select" aria-label="Floating label select example" (change)="onTypeChange($event)" >
+            <select class="form-select" aria-label="Floating label select example" (change)="onTypeChange($event)">
               <option selected disabled value="">Choose...</option>
-              <option *ngFor="let type of types" [value]="type.name" [selected]="type.name==model.type">{{type.name}}</option>
+              <option *ngFor="let type of types" [value]="type.name"
+                      [selected]="type.name==model.type">{{type.name}}</option>
             </select>
+          </div>
+          <div  class="invalid-input">
+            <div *ngIf="f.submitted && model.type==''" class="fst-italic text-danger invalid-input">Field is required
+            </div>
           </div>
         </div>
 
-          <div class="form-group division">
-            <label class="mt-2 mb-2">Fur color</label>
-            <div>
-              <select class="form-select"  aria-label="Floating label select example" (change)="onFurChange($event)" [ngModel]="model.furColor">
-                <option selected disabled>Choose...</option>
-                <option *ngFor="let furColor of furColors" [selected]="furColor.name==model.furColor">{{ furColor.name }}</option>
-              </select>
+        <div class="form-group division">
+          <label class="mt-2 mb-2">Fur color</label>
+          <div>
+            <select class="form-select" aria-label="Floating label select example" (change)="onFurChange($event)"
+                    [ngModel]="model.furColor">
+              <option selected disabled>Choose...</option>
+              <option *ngFor="let furColor of furColors"
+                      [selected]="furColor.name==model.furColor">{{ furColor.name }}</option>
+            </select>
+          </div>
+          <div  class="invalid-input">
+            <div *ngIf="f.submitted && model.furColor==''" class="fst-italic text-danger invalid-input">Field is required
             </div>
           </div>
+        </div>
 
 
         <div class="form-group division">
           <label class="mt-2 mb-2">Country of origin</label>
           <div>
-            <select class="form-select"  aria-label="Floating label select example" (change)="onCountryChange($event)" [ngModel]="model.country">
+            <select class="form-select" aria-label="Floating label select example" (change)="onCountryChange($event)"
+                    [ngModel]="model.country">
               <option selected disabled>Choose...</option>
-              <option *ngFor="let country of countries" [selected]="country.name==model.country">{{ country.name }}</option>
+              <option *ngFor="let country of countries"
+                      [selected]="country.name==model.country">{{ country.name }}</option>
             </select>
+          </div>
+          <div  class="invalid-input">
+            <div *ngIf="f.submitted && model.country==''" class="fst-italic text-danger invalid-input">Field is required
+            </div>
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary pull-right button mt-3" >
+        <button type="submit" class="btn btn-primary pull-right button mt-3">
           <span>Edit pet</span>
         </button>
       </form>

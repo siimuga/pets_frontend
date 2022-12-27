@@ -71,7 +71,6 @@ export class ApiService {
   }
 
   sendUpdateRequest(feedback: PetRequest): Observable<any> {
-    debugger
     return this.http.patch(this.MANAGE_PET_URL, feedback);
   }
 

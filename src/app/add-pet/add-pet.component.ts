@@ -69,15 +69,18 @@ export class AddPetComponent implements OnInit {
   }
 
   sendRequest(): void {
-    debugger
-    this.apiService.sendRequest(this.model).subscribe(
-      res => {
-        this.goMyPets()
-      },
-      err => {
-        alert(err.error.detail)
-      }
-    )
+    if (this.model.type == "" || this.model.furColor == "" || this.model.country == "") {
+      return;
+    } else {
+      this.apiService.sendRequest(this.model).subscribe(
+        res => {
+          this.goMyPets()
+        },
+        err => {
+          alert(err.error.detail)
+        }
+      );
+    }
   }
 
   public findAllTypes() {

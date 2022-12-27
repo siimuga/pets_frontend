@@ -16,3 +16,7 @@ font-size: small;
   flex-direction: column;
   align-items: center;
 }
+
+.capital {
+  text-transform: capitalize
+}

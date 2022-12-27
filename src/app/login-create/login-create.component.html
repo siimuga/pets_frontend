@@ -75,13 +75,15 @@
                          [ngClass]="{ 'is-invalid': fc.submitted && nameCreate.invalid}"
                          required
                          maxlength="12"
-                          minlength="5"
+                         minlength="5"
                          (keydown.space)="$event.preventDefault()"
                   >
                   <div *ngIf="fc.submitted && nameCreate.invalid" class="invalid-input">
-                    <div *ngIf="nameCreate.errors?.['required']" class="fst-italic text-danger invalid-input">Field is required
+                    <div *ngIf="nameCreate.errors?.['required']" class="fst-italic text-danger invalid-input">Field is
+                      required
                     </div>
-                    <div *ngIf="nameCreate.errors?.['minlength']" class="fst-italic text-danger invalid-input">Username has to be 5 characters long
+                    <div *ngIf="nameCreate.errors?.['minlength']" class="fst-italic text-danger invalid-input">Username
+                      has to be 5 characters long
                     </div>
                   </div>
                 </td>
@@ -96,12 +98,18 @@
                            required
                            maxlength="24"
                            minlength="6"
+                           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"
                            (keydown.space)="$event.preventDefault()"
                 >
                   <div *ngIf="fc.submitted && pwCreate.invalid" class="invalid-input">
-                    <div *ngIf="pwCreate.errors?.['required']" class="fst-italic text-danger invalid-input">Field is required
+                    <div *ngIf="pwCreate.errors?.['required']" class="fst-italic text-danger invalid-input">Field is
+                      required
                     </div>
-                    <div *ngIf="nameCreate.errors?.['minlength']" class="fst-italic text-danger invalid-input">Password has to be 6 characters long
+                    <div *ngIf="pwCreate.errors?.['minlength']" class="fst-italic text-danger invalid-input">Password
+                      has to be atleast 6 characters long
+                    </div>
+                    <div *ngIf="pwCreate.errors?.['pattern']" class="fst-italic text-danger invalid-input">Atleast one
+                      number, lowercase letter,<br>and uppercase letter is required
                     </div>
                   </div>
 
