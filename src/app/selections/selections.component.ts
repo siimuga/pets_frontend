@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../shared/api.service";
-import {Types} from "./module/types";
-import {FurColor} from "./module/fur-color";
-import {Countries} from "./module/countries";
+import {Types} from "../shared/types";
+import {FurColor} from "../shared/fur-color";
+import {Countries} from "../shared/countries";
 import {Router} from "@angular/router";
 import {Selections} from "./module/selections";
 
@@ -39,17 +39,20 @@ export class SelectionsComponent implements OnInit {
 
 
   addSelections(): void {
-    this.apiService.addSelections(this.model).subscribe(
-      res => {
-        alert("Data successfully added")
-        location.reload()
-      },
-      err => {
-        alert(err.error.detail)
-      }
-    );
+    if (this.model.type == "" && this.model.furColor == "" && this.model.country == "") {
+      alert("Please fill interested the fields")
+    } else {
+      this.apiService.addSelections(this.model).subscribe(
+        res => {
+          alert("Data successfully added")
+          location.reload()
+        },
+        err => {
+          alert(err.error.detail)
+        }
+      );
+    }
   }
-
   public findAllTypes() {
     this.apiService.findAllTypes().subscribe(
       res => {

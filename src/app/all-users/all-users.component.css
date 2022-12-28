@@ -4,3 +4,14 @@
   align-items: flex-end;
 }
 
+.hide {
+  display: none;
+}
+
+.myDIV:hover + .hide {
+  display: block;
+}
+
+.myDIV {
+  display: block;
+}

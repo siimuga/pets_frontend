@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {AllPets} from "../all-pets/module/all-pets";
-import {PetRequest} from "../add-pet/add-pet.component";
-import {Types} from "../add-pet/module/types";
-import {FurColor} from "../add-pet/module/fur-color";
-import {Countries} from "../add-pet/module/countries";
+
 import {MyPets} from "../my-pets/module/my-pets";
 import {Login} from "../login-create/module/login";
 import {Create} from "../login-create/module/create";
 import {AllUsers} from "../all-users/module/all-users";
 import {Selections} from "../selections/module/selections";
+import {Types} from "./types";
+import {FurColor} from "./fur-color";
+import {Countries} from "./countries";
+import {PetRequest} from "./petrequest";
 
 @Injectable({
   providedIn: 'root'

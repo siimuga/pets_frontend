@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../shared/api.service";
-import {Types} from "./module/types";
-import {FurColor} from "./module/fur-color";
-import {Countries} from "./module/countries";
 import {Router} from "@angular/router";
+import {PetRequest} from "../shared/petrequest";
+import {Countries} from "../shared/countries";
+import {Types} from "../shared/types";
+import {FurColor} from "../shared/fur-color";
 
 @Component({
   selector: 'app-add-pet',
@@ -23,6 +24,7 @@ export class AddPetComponent implements OnInit {
   types: Types[] = [];
   furColors: FurColor[] = [];
   countries: Countries[] = [];
+  userName:string=''
 
   constructor(private apiService: ApiService,
               private router: Router) {
@@ -30,6 +32,7 @@ export class AddPetComponent implements OnInit {
 
   ngOnInit() {
     this.model.userId = Number(sessionStorage.getItem('userId'));
+    this.userName = String(sessionStorage.getItem("userName"));
     this.getNewCode()
     this.findAllTypes()
     this.findAllFurColors()
@@ -38,6 +41,7 @@ export class AddPetComponent implements OnInit {
 
   onLogOut() {
     sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("userName");
     this.router.navigate(['/']);
   }
 
@@ -115,13 +119,4 @@ export class AddPetComponent implements OnInit {
       }
     )
   }
-}
-
-export interface PetRequest {
-  name: string;
-  code: string;
-  type: string;
-  furColor: string;
-  country: string;
-  userId: number;
 }

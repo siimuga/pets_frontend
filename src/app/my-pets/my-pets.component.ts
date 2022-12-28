@@ -13,6 +13,7 @@ export class MyPetsComponent implements OnInit{
   userId: number = Number(sessionStorage.getItem("userId"));
   pets: MyPets[] = []
   sort:string='nameAsc'
+  userName:string=''
 
   constructor(private apiService:ApiService,
               private editService: EditService,
@@ -21,6 +22,8 @@ export class MyPetsComponent implements OnInit{
 
   ngOnInit() {
     this.findAllMyPets();
+    this.userName = String(sessionStorage.getItem("userName"));
+
   }
 
   public findAllMyPets() {
@@ -48,6 +51,7 @@ export class MyPetsComponent implements OnInit{
 
   onLogOut() {
     sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("userName");
     this.router.navigate(['/']);
   }
 

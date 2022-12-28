@@ -33,7 +33,10 @@
   <tr *ngFor="let user of users">
     <th scope="row">{{ user.seqNr }}</th>
     <td>{{ user.name }}</td>
-    <td>{{ user.password }}</td>
+    <td>
+      <div class="myDIV" (mouseenter)="onMouseOver()" (mouseleave)="onMouseLeave()">{{secret}}</div>
+      <div class="hide">{{ user.password }}</div>
+    </td>
     <td>{{ user.petsActive }}</td>
     <td>{{ user.petsDeactive }}</td>
   </tr>

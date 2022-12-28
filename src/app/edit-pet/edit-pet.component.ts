@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../shared/api.service";
-import {Types} from "./module/types";
-import {FurColor} from "./module/fur-color";
-import {Countries} from "./module/countries";
 import {Router} from "@angular/router";
 import {EditService} from "../shared/edit.service";
+import {PetRequest} from "../shared/petrequest";
+import {Types} from "../shared/types";
+import {FurColor} from "../shared/fur-color";
+import {Countries} from "../shared/countries";
 
 @Component({
   selector: 'app-edit-pet',
@@ -23,6 +24,7 @@ export class EditPetComponent implements OnInit {
   types: Types[] = [];
   furColors: FurColor[] = [];
   countries: Countries[] = [];
+  userName:string=''
 
   constructor(private apiService: ApiService,
               private editService: EditService,
@@ -32,6 +34,7 @@ export class EditPetComponent implements OnInit {
   ngOnInit() {
     this.model = this.editService.pet;
     this.model.userId=Number(sessionStorage.getItem('userId'))
+    this.userName = String(sessionStorage.getItem("userName"));
     this.findAllTypes()
     this.findAllFurColors()
     this.findAllCountries()
@@ -39,6 +42,7 @@ export class EditPetComponent implements OnInit {
 
   onLogOut() {
     sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("userName");
     this.router.navigate(['/']);
   }
 
@@ -101,13 +105,4 @@ export class EditPetComponent implements OnInit {
       }
     )
   }
-}
-
-export interface PetRequest {
-  name: string;
-  code: string;
-  type: string;
-  furColor: string;
-  country: string;
-  userId: number;
 }

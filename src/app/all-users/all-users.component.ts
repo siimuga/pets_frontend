@@ -11,6 +11,7 @@ import {EditService} from "../shared/edit.service";
 })
 export class AllUsersComponent implements OnInit{
   users: AllUsers[]=[]
+  secret:string="********"
 
   constructor(private apiService:ApiService,
               private editService: EditService,
@@ -30,6 +31,14 @@ export class AllUsersComponent implements OnInit{
         alert(err.error.detail)
       }
     )
+  }
+
+  onMouseOver() {
+    this.secret=""
+  }
+
+  onMouseLeave() {
+    this.secret="********"
   }
 
   onLogOut() {
