@@ -10,6 +10,7 @@ import {MyPets} from "../my-pets/module/my-pets";
 import {Login} from "../login-create/module/login";
 import {Create} from "../login-create/module/create";
 import {AllUsers} from "../all-users/module/all-users";
+import {Selections} from "../selections/module/selections";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ import {AllUsers} from "../all-users/module/all-users";
 export class ApiService {
   private BASE_URL = "http://localhost:8080/api";
   private MANAGE_PET_URL = `${this.BASE_URL}/pet`;
+  private SELECTION_URL = `${this.BASE_URL}/selection`;
   private LOGIN_URL = `${this.BASE_URL}/login`;
   private REGISTER_URL = `${this.BASE_URL}/register`;
   private SORT_PETS_URL = `${this.BASE_URL}/pets/sort`;
@@ -60,6 +62,10 @@ export class ApiService {
 
   sendRequest(feedback: PetRequest): Observable<any> {
     return this.http.post(this.MANAGE_PET_URL, feedback);
+  }
+
+  addSelections(feedback: Selections): Observable<any> {
+    return this.http.post(this.SELECTION_URL, feedback);
   }
 
   onLogIn(feedback: Login): Observable<any> {

@@ -11,6 +11,7 @@ import {EditPetComponent} from "./edit-pet/edit-pet.component";
 import {MyPetsComponent} from "./my-pets/my-pets.component";
 import {LoginCreateComponent} from "./login-create/login-create.component";
 import {AllUsersComponent} from "./all-users/all-users.component";
+import {SelectionsComponent} from "./selections/selections.component";
 
 const appRoutes:Routes=[
   {
@@ -24,6 +25,10 @@ const appRoutes:Routes=[
   {
     path:'admin/users',
     component:AllUsersComponent
+  },
+  {
+    path:'admin/add',
+    component:SelectionsComponent
   },
   {
     path:'mypets',
@@ -57,6 +62,7 @@ const appRoutes:Routes=[
     AddPetComponent,
     EditPetComponent,
     LoginCreateComponent,
+    SelectionsComponent,
     NotFoundComponent
   ],
   imports: [

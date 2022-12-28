@@ -29,6 +29,7 @@
                          #name="ngModel"
                          [ngClass]="{ 'is-invalid': f.submitted && name.invalid}"
                          required
+                         (keydown.enter)="fc.form.valid && onLogIn()"
                   />
                   <div *ngIf="f.submitted && name.invalid" class="invalid-input">
                     <div *ngIf="name.errors?.['required']" class="fst-italic text-danger invalid-input">Field is
@@ -77,6 +78,7 @@
                          maxlength="12"
                          minlength="5"
                          (keydown.space)="$event.preventDefault()"
+                         (keydown.enter)="fc.form.valid && onCreate()"
                   >
                   <div *ngIf="fc.submitted && nameCreate.invalid" class="invalid-input">
                     <div *ngIf="nameCreate.errors?.['required']" class="fst-italic text-danger invalid-input">Field is

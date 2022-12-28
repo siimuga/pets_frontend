@@ -1,0 +1,40 @@
+.invalid-input {
+font-size: small;
+}
+
+.button {
+  width: 100%;
+}
+
+.division {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.inserting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.capital {
+  text-transform: capitalize
+}
+
+.middleSelection {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.allSelections {
+  display: flex;
+}
+
+.sendButton {
+  width: auto;
+}
+
+.centeringDiv {
+  justify-content: center;
+  display: flex;
+}
