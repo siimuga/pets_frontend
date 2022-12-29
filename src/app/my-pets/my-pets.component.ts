@@ -32,7 +32,7 @@ export class MyPetsComponent implements OnInit{
         this.pets = res;
       },
       err=> {
-        alert(err.error.detail)
+        alert("An error occurred")
       }
     )
   }
@@ -44,7 +44,7 @@ export class MyPetsComponent implements OnInit{
         this.pets = res;
       },
       err=> {
-        alert(err.error.detail)
+        alert("An error occurred")
       }
     )
   }
@@ -61,13 +61,13 @@ export class MyPetsComponent implements OnInit{
   }
 
   deletePet(pet:any):void{
-    if(window.confirm('Are sure you want to delete this item ?')){
+    if(window.confirm('Are sure you want to delete '+ pet.name +' ?')){
       this.apiService.deletePet(pet.id).subscribe(
         res => {
           location.reload()
         },
         err => {
-          alert(err.error.detail)
+          alert("An error occurred")
         }
       )
     }

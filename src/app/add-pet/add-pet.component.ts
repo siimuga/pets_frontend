@@ -67,7 +67,7 @@ export class AddPetComponent implements OnInit {
         this.model.code = res;
       },
       err => {
-        alert(err.error.detail)
+        alert("An error occurred")
       }
     )
   }
@@ -81,7 +81,7 @@ export class AddPetComponent implements OnInit {
           this.goMyPets()
         },
         err => {
-          alert(err.error.detail)
+          alert("An error occurred")
         }
       );
     }
@@ -93,7 +93,7 @@ export class AddPetComponent implements OnInit {
         this.types = res;
       },
       err => {
-        alert(err.error.detail)
+        alert("An error occurred")
       }
     )
   }
@@ -104,7 +104,7 @@ export class AddPetComponent implements OnInit {
         this.furColors = res;
       },
       err => {
-        alert(err.error.detail)
+        alert("An error occurred")
       }
     )
   }
@@ -115,7 +115,7 @@ export class AddPetComponent implements OnInit {
         this.countries = res;
       },
       err => {
-        alert(err.error.detail)
+        alert("An error occurred")
       }
     )
   }

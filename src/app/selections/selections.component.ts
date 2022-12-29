@@ -59,7 +59,7 @@ export class SelectionsComponent implements OnInit {
         this.types = res;
       },
       err => {
-        alert(err.error.detail)
+        alert("An error occurred")
       }
     )
   }
@@ -70,7 +70,7 @@ export class SelectionsComponent implements OnInit {
         this.furColors = res;
       },
       err => {
-        alert(err.error.detail)
+        alert("An error occurred")
       }
     )
   }
@@ -81,7 +81,7 @@ export class SelectionsComponent implements OnInit {
         this.countries = res;
       },
       err => {
-        alert(err.error.detail)
+        alert("An error occurred")
       }
     )
   }

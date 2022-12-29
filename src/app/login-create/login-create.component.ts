@@ -37,7 +37,6 @@ export class LoginCreateComponent implements OnInit{
   onLogIn(): void {
     this.apiService.onLogIn(this.login).subscribe(
       res => {
-        debugger
         sessionStorage.setItem("userId", String(res));
         sessionStorage.setItem("userName", this.login.username);
         if (res > 1) {
