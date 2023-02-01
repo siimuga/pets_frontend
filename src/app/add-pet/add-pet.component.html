@@ -28,7 +28,6 @@
                  placeholder="Name"
                  [(ngModel)]="model.name"
                  #name="ngModel"
-                 [ngClass]="{ 'is-invalid': f.submitted && name.invalid}"
                  pattern="^[a-zA-ZÜÕÖÄüõöä]+[a-z -üõöä]+[a-züõöä]$"
                  maxlength="24"
                  minlength="3"

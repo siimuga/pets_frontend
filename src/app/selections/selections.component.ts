@@ -40,7 +40,7 @@ export class SelectionsComponent implements OnInit {
 
   addSelections(): void {
     if (this.model.type == "" && this.model.furColor == "" && this.model.country == "") {
-      alert("Please fill interested the fields")
+      alert("Please fill the interested fields")
     } else {
       this.apiService.addSelections(this.model).subscribe(
         res => {

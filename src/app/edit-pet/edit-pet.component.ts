@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ApiService} from "../shared/api.service";
 import {Router} from "@angular/router";
 import {EditService} from "../shared/edit.service";
@@ -46,10 +46,6 @@ export class EditPetComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  goMyPets(){
-    this.router.navigate(['/mypets']);
-  }
-
   onTypeChange(event: any) {
     this.model.type = event.target.value;
   }
@@ -65,7 +61,7 @@ export class EditPetComponent implements OnInit {
   sendUpdateRequest(): void {
     this.apiService.sendUpdateRequest(this.model).subscribe(
       res => {
-        this.goMyPets()
+        this.router.navigate(['/mypets']);
       },
       err => {
         alert("An error occurred")

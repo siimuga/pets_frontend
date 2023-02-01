@@ -15,52 +15,58 @@
 </nav>
 <p class="fs-2 fw-semibold text-center">Pets</p>
 
-<div class="form-group division selected">
-  <div>
-    <select class="form-select" aria-label="Floating label select example" (change)="onSelectChange($event)" >
-      <option selected value="nameAsc">Name A->Z</option>
-      <option value="nameDes">Name Z->A</option>
-      <option value="codeAsc">Code 0->1</option>
-      <option value="codeDes">Code 1->0</option>
-      <option value="typeAsc">Type A->Z</option>
-      <option value="typeDes">Type Z->A</option>
-      <option value="furAsc">Fur color A->Z</option>
-      <option value="furDes">Fur color Z->A</option>
-      <option value="countryAsc">Country A->Z</option>
-      <option value="countryDes">Country Z->A</option>
-    </select>
+<div *ngIf="pets.length===0"   class="fs-5 fw-semibold text-center">No pets to display</div>
+
+<div *ngIf="pets.length>0" >
+  <div class="form-group division selected">
+    <div>
+      <select class="form-select" aria-label="Floating label select example" (change)="onSelectChange($event)" >
+        <option selected value="nameAsc">Name A->Z</option>
+        <option value="nameDes">Name Z->A</option>
+        <option value="codeAsc">Code 0->1</option>
+        <option value="codeDes">Code 1->0</option>
+        <option value="typeAsc">Type A->Z</option>
+        <option value="typeDes">Type Z->A</option>
+        <option value="furAsc">Fur color A->Z</option>
+        <option value="furDes">Fur color Z->A</option>
+        <option value="countryAsc">Country A->Z</option>
+        <option value="countryDes">Country Z->A</option>
+      </select>
+    </div>
   </div>
+
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Code</th>
+      <th scope="col">Type</th>
+      <th scope="col">Fur color</th>
+      <th scope="col" >Country</th>
+      <th scope="col" ></th>
+      <th scope="col" ></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let pet of pets">
+      <th scope="row">{{ pet.seqNr }}</th>
+      <td>{{ pet.name }}</td>
+      <td>{{ pet.code }}</td>
+      <td>{{ pet.type }}</td>
+      <td>{{ pet.furColor }}</td>
+      <td >{{ pet.country }}</td>
+
+      <td><button type="button" class="btn btn-primary" (click)="editPet(pet)">
+        Edit pet
+      </button></td>
+      <td class="displaying"><button type="button" class="btn btn-danger" (click)="deletePet(pet)">
+        Delete pet
+      </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 
-<table class="table table-hover">
-  <thead>
-  <tr>
-    <th scope="col">#</th>
-    <th scope="col">Name</th>
-    <th scope="col">Code</th>
-    <th scope="col">Type</th>
-    <th scope="col">Fur color</th>
-    <th scope="col" >Country</th>
-    <th scope="col" ></th>
-    <th scope="col" ></th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let pet of pets">
-    <th scope="row">{{ pet.seqNr }}</th>
-    <td>{{ pet.name }}</td>
-    <td>{{ pet.code }}</td>
-    <td>{{ pet.type }}</td>
-    <td>{{ pet.furColor }}</td>
-    <td >{{ pet.country }}</td>
 
-    <td><button type="button" class="btn btn-primary" (click)="editPet(pet)">
-      Edit pet
-    </button></td>
-    <td class="displaying"><button type="button" class="btn btn-danger" (click)="deletePet(pet)">
-      Delete pet
-    </button>
-    </td>
-  </tr>
-  </tbody>
-</table>
